@@ -1,0 +1,99 @@
+/* Core CSS required for Ionic components to work properly */
+@import '@ionic/vue/css/core.css';
+
+/* Basic CSS for apps built with Ionic */
+@import '@ionic/vue/css/normalize.css';
+@import '@ionic/vue/css/structure.css';
+@import '@ionic/vue/css/typography.css';
+
+/* Optional CSS utils that can be commented out */
+@import '@ionic/vue/css/padding.css';
+
+@import '@/stylesheets/variables.css';
+@import '@/stylesheets/text-shadow';
+@import '@/stylesheets/transitions';
+
+/* Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  /* Chrome, Safari and Opera */
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+  .grid-scroll-x {
+    @apply grid grid-flow-col overflow-x-auto snap-x snap-mandatory scrollbar-hide;
+  }
+
+  .grid-scroll-x > * {
+    @apply snap-start
+  }
+
+  /* Safari does not respect max-height with aspect-ratio, so workaround it */
+  .aspect-square-max-h-screen-1\/2 {
+    @apply max-h-screen-1/2 overflow-hidden relative;
+  }
+
+  .aspect-square-max-h-screen-1\/2:before {
+    content: '';
+    @apply block aspect-square;
+  }
+
+  .aspect-16\/9-max-h-screen-1\/2 {
+    @apply max-h-screen-1/2 overflow-hidden relative;
+  }
+
+  .aspect-16\/9-max-h-screen-1\/2:before {
+    content: '';
+    @apply block aspect-16/9;
+  }
+
+  .text-muted {
+    @apply text-zinc-500;
+  }
+}
+
+.reorder-enabled .hide-reorder {
+  display: none;
+}
+
+*[routerlink] {
+  @apply cursor-pointer;
+}
+
+@media print {
+  body {
+    position: initial !important;
+    max-height: initial !important;
+    overflow: auto !important;
+  }
+
+  ion-router-outlet, ion-content {
+    overflow: auto !important;
+    contain: none !important;
+    position: initial !important;
+  }
+
+  .no-print,
+  ion-menu,
+  ion-header,
+  ion-footer {
+    display: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .always-dark .ion-color-light {
+    --ion-color-base: var(--ion-color-dark) !important;
+    --ion-color-base-rgb: var(--ion-color-dark-rgb) !important;
+    --ion-color-contrast: var(--ion-color-dark-contrast) !important;
+    --ion-color-contrast-rgb: var(--ion-color-dark-contrast-rgb) !important;
+    --ion-color-shade: var(--ion-color-dark-shade) !important;
+    --ion-color-tint: var(--ion-color-dark-tint) !important;
+  }
+}

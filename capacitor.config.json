@@ -1,0 +1,8 @@
+{
+  "appId": "app.chordbook.app",
+  "appName": "Chord Book",
+  "bundledWebRuntime": false,
+  "server": {
+    "url": "https://chordbook.app/"
+  }
+}
